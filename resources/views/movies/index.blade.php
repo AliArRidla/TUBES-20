@@ -13,9 +13,9 @@
           <div class="col-lg-12">
             <ul id="portfolio-flters">
               <li data-filter="*" class="filter-active">All</li>
-              <li data-filter=".aksi">Action</li>
-              <li data-filter=".romantis">Biography</li>
-              <li data-filter=".biography">Anime</li>
+              <li data-filter=".aksi">Aksi</li>
+              <li data-filter=".romantis">Romantis</li>
+              <li data-filter=".anime">Anime</li>
             </ul>
           </div>
         </div>

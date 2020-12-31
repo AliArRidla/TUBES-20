@@ -48,7 +48,7 @@
                     <div class="dropdown ml-lg-auto ml-3 toolbar-item">
                       <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownexport" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Export</button>
                       <div class="dropdown-menu" aria-labelledby="dropdownexport">
-                        <a class="dropdown-item" href="#">Export as PDF</a>
+                        <a class="dropdown-item" href="/users/cetak">Export as PDF</a>
                         <a class="dropdown-item" href="#">Export as DOCX</a>
                         <a class="dropdown-item" href="#">Export as CDR</a>
                       </div>
@@ -71,7 +71,7 @@
                             <th>Foto</th>
                             <th>Nama</th>
                             <th>Email</th>
-                            <th>Password</th>
+                            <th>Roles</th>
                             <th>Action</th>
                           </tr>
                         </thead>
@@ -81,11 +81,11 @@
                               <tr>
                                 <td class="font-weight-medium" >ID-{{$item -> id}}</td>
                             <td>
-                              <img class="img-sm rounded-circle" src="assets/images/faces/face3.jpg" alt="profile image">                            
+                              <img class="img-sm rounded-circle" src="{{asset('storage/'.$item->image)}}" alt="profile image">                            
                             </td>
                             <td class="font-weight-medium">{{$item -> name}}</td>
                             <td class="text-success font-weight-medium">{{$item -> email}}</td>
-                            <td class="text-danger font-weight-medium">{{$item -> password}}</td>
+                            <td class="text-danger font-weight-medium">{{$item -> roles}}</td>
                             <td>
                                 <a href="/users/edit/{{$item->id}}" class="btn btn-success toolbar-item">edit</a>
                                 <a href="/users/delete/{{$item->id}}" class="btn btn-danger toolbar-item">delete</a>

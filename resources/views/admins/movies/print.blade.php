@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>   
-    <style>
+     <style>
         table {
             border-collapse: collapse;
             width: 100%;
@@ -22,28 +22,29 @@
             color: white;
         }
         tr:hover {background-color: #f5f5f5;}
-    </style> 
+    </style>  
 </head>
 <body>
-  
-    {{-- <div class="container"> --}}
-      <h1>Daftar User</h1>
+      
+      <h1>Daftar Movie</h1>
       <table>
           <tr>
-            <th>User ID</th>
-            <th>Name</th>                                
-            <th>Email</th>
-            <th>Roles</th>                                
-          </tr>          
-
-          @foreach ($user as $item)
+            <th>Movies ID</th>
+            <th>judul</th>                                
+            <th>kategori</th>
+            <th>deskripsi</th>                                
+          </tr>
+   
+          @foreach ($movie as $item)
           <tr>
-            <td>ID-PRO-{{$item->id}}</td>
-            <td>{{$item->name}}</td>                                
-            <td>{{$item->email}}</td>
-            <td>{{$item->roles}}</td>                                
+            <td>
+             ID-PRO-{{$item->id}}
+            </td>
+            <td>{{$item->judul}}</td>                                
+            <td>{{$item->kategori}}</td>
+            <td>{{$item->deskripsi}}</td>                                
           </tr>    
-          @endforeach    
+          @endforeach
       </table>
     </div>
 </body>

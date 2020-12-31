@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Movie;
 use App\Producer;
 use Illuminate\Http\Request;
+use PDF;
 
 class MoviesController extends Controller
 {
@@ -100,5 +101,12 @@ class MoviesController extends Controller
     public function destroy(Movies $movies)
     {
         //
+    }
+    public function print()
+    {
+        $movie = Movie::all();
+        $pdf = PDF::loadView('admins.movies.print', compact('movie'));
+        return $pdf->download('laporan_movies.pdf');
+        // return $pdf->download('laporan.pdf');
     }
 }
