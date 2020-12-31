@@ -29,6 +29,7 @@ Route::post('/movies/store', 'admins\MoviesController@store');
 Route::get('/movies/edit/{movies}', 'admins\MoviesController@edit')->name('editMovies');
 Route::put('/movies/update/{movies}', 'admins\MoviesController@update')->name('updateMovies');
 Route::get('/movies/delete/{movies}', 'admins\MoviesController@destroy')->name('hapusMovies');
+Route::get('/movies/cetak', 'admins\MoviesController@print')->name('printMovies');
 //movies producers
 Route::get('/producers', 'admins\ProducersController@index')->name('producers');
 Route::get('/producers/tambah', 'admins\ProducersController@create')->name('tambahProducers');

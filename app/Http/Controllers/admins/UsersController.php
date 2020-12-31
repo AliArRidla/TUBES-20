@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use PDF;
 
 class UsersController extends Controller
 {
@@ -100,6 +101,16 @@ class UsersController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+        $user = User::findOrFail($user->id);
+        $user->delete();
+        return redirect()->route('users')
+            ->with('danger', 'Users deleted successfully.');
+    }
+    public function print()
+    {
+        $user = User::all();
+        $pdf = PDF::loadView('admins.users.print', compact('user'));
+        return $pdf->download('laporan_user.pdf');
+        // return $pdf->download('laporan.pdf');
     }
 }

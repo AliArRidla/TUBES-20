@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Movie;
+use App\Producer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
 
@@ -27,7 +28,9 @@ class MovieController extends Controller
      */
     public function tambah()
     {
-        return view('movies.tambah');
+        $movies = Movie::all();
+        $producers = Producer::all();
+        return view('movies.tambah', compact('producers'));
     }
 
     /**
@@ -48,12 +51,12 @@ class MovieController extends Controller
         $movie = new Movie();
 
         $movie->judul = $request->judul;
-        $movie->produser = $request->produser;
+        $movie->id_produser = $request->id_produser;
         $movie->kategori = $request->kategori;
         $movie->deskripsi = $request->deskripsi;
         $movie->image = $files;
         $movie->save();
-        return redirect()->route('dashboard')
+        return redirect()->route('home')
             ->with('success', 'Movie created successfully.');
         //Redirect ke halaman books/index.blade.php dengan pesan success
     }
@@ -98,7 +101,7 @@ class MovieController extends Controller
         $movie->deskripsi = $request->deskripsi;
         $movie->image = $files;
         $movie->save();
-        return redirect()->route('dashboard')
+        return redirect()->route('home')
             ->with('success', 'Movie created successfully.');
         //Redirect ke halaman books/index.blade.php dengan pesan success
     }
@@ -113,7 +116,7 @@ class MovieController extends Controller
     {
         $movies = Movie::findOrFail($movies->id);
         $movies->delete();
-        return redirect()->route('dashboard')
+        return redirect()->route('home')
             ->with('danger', 'Article deleted successfully.');
     }
 }
