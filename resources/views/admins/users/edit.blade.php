@@ -7,14 +7,14 @@
           <div class="content-wrapper">      
         <div class="col-md-8 mx-auto">
               <h2 class="text-center mb-4">Edit Data Produser</h2>
-              <img src="{{asset('storage/'.$producer->image)}}" width="50%" class="img-thumbnail rounded-circle mx-auto d-block mb-4" alt="...">
+              <img src="{{asset('storage/'.$user->image)}}" width="50%" class="img-thumbnail rounded-circle mx-auto d-block mb-4" alt="...">
               <div class="auto-form-wrapper">
-                <form action="/producers/update/{{$producer->id}}" method="POST" enctype="multipart/form-data">
+                <form action="/users/update/{{$user->id}}" method="POST" enctype="multipart/form-data">
                   @csrf
                     @method('PUT')
                   <div class="form-group">
                     <div class="input-group">
-                      <input type="text" name="nama" class="form-control" value="{{$producer->nama}}">
+                      <input type="text" name="name" class="form-control" value="{{$user->name}}">
                       <div class="input-group-append">
                         <span class="input-group-text">
                           <i class="mdi mdi-check-circle-outline"></i>
@@ -24,7 +24,7 @@
                   </div>
                   <div class="form-group">
                     <div class="input-group">
-                      <input type="date" name="ttl" class="form-control" value="{{$producer->ttl}}">
+                      <input type="date" name="email" class="form-control" value="{{$user->email}}">
                       <div class="input-group-append">
                         <span class="input-group-text">
                           <i class="mdi mdi-check-circle-outline"></i>
@@ -32,9 +32,10 @@
                       </div>
                     </div>
                   </div>
+
                   <div class="form-group">
                     <div class="input-group">
-                      <input type="text" name="kota" class="form-control" value="{{$producer->kota}}">
+                      <input type="text" name="roles" class="form-control" value="{{$user->roles}}">
                       <div class="input-group-append">
                         <span class="input-group-text">
                           <i class="mdi mdi-check-circle-outline"></i>
@@ -43,6 +44,17 @@
                     </div>
                   </div>   
                   
+                  <div class="form-group">
+                    <div class="input-group">
+                      <input type="text" name="password" class="form-control" value="{{$user->password}}">
+                      <div class="input-group-append">
+                        <span class="input-group-text">
+                          <i class="mdi mdi-check-circle-outline"></i>
+                        </span>
+                      </div>
+                    </div>
+                  </div>   
+
                   <div class="form-group">
                     <div class="input-group">
                       <input type="file" name="file" class="form-control" placeholder="Masukkan gambar"> 

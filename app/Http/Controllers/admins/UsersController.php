@@ -78,7 +78,7 @@ class UsersController extends Controller
      */
     public function edit(User $user)
     {
-        //
+        return view('admins.users.edit', compact('user'));
     }
 
     /**
@@ -90,7 +90,23 @@ class UsersController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+        // Validate the request...
+        if ($request->file('file')) {
+            $files = $request->file('file')->store('img/users', 'public');
+        }
+        $request->validate([
+            'file' => 'required|mimes:png,jpg,jpeg|max:2048'
+        ]);
+        $user = new User();
+
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = Hash::make($request->password);
+        $user->roles = $request->roles;
+        $user->image = $files;
+        $user->update();
+        return redirect()->route('users')
+            ->with('success', 'User updated successfully.');
     }
 
     /**

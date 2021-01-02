@@ -30,6 +30,8 @@ Route::get('/movies/edit/{movies}', 'admins\MoviesController@edit')->name('editM
 Route::put('/movies/update/{movies}', 'admins\MoviesController@update')->name('updateMovies');
 Route::get('/movies/delete/{movies}', 'admins\MoviesController@destroy')->name('hapusMovies');
 Route::get('/movies/cetak', 'admins\MoviesController@print')->name('printMovies');
+Route::post('/movies/comments', 'CommentsController@store')->name('comment.add');
+Route::post('/movies/reply/store', 'CommentsController@replyStore')->name('reply.add');
 //movies producers
 Route::get('/producers', 'admins\ProducersController@index')->name('producers');
 Route::get('/producers/tambah', 'admins\ProducersController@create')->name('tambahProducers');
