@@ -10,4 +10,12 @@ class Movie extends Model
     {
         return $this->belongsTo(Producer::class);
     }
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+    public function comments()
+    {
+        return $this->morphMany(Comment::class, 'commentable')->whereNull('parent_id');
+    }
 }

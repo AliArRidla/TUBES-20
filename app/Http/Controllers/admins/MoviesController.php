@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\admins;
 
+use App\Comment;
 use App\Http\Controllers\Controller;
 use App\Movie;
 use App\Producer;
@@ -28,7 +29,9 @@ class MoviesController extends Controller
      */
     public function create()
     {
-        return view('admins.movies.tambah');
+        $movies = Movie::all();
+        $producers = Producer::all();
+        return view('admins.movies.tambah', compact('producers'));
     }
 
     /**
@@ -54,7 +57,7 @@ class MoviesController extends Controller
         $movie->id_produser = $request->id_produser;
         $movie->image = $files;
         $movie->save();
-        return redirect()->route('dashboard')
+        return redirect()->route('movies')
             ->with('success', 'Movie created successfully.');
     }
 
@@ -64,9 +67,10 @@ class MoviesController extends Controller
      * @param  \App\Movies  $movies
      * @return \Illuminate\Http\Response
      */
-    public function show(Movies $movies)
+    public function show(Movie $movies)
     {
-        //
+        $comments = Comment::find($movies->id);
+        return view();
     }
 
     /**
@@ -87,7 +91,7 @@ class MoviesController extends Controller
      * @param  \App\Movies  $movies
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Movies $movies)
+    public function update(Request $request, Movie $movies)
     {
         //
     }
@@ -98,7 +102,7 @@ class MoviesController extends Controller
      * @param  \App\Movies  $movies
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Movies $movies)
+    public function destroy(Movie $movies)
     {
         //
     }

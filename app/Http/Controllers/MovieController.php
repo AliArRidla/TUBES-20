@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Comment;
 use App\Movie;
 use App\Producer;
 use Illuminate\Http\Request;
@@ -69,6 +70,7 @@ class MovieController extends Controller
      */
     public function show(Movie $movies)
     {
+        // $movies = Movie::all();
         return view('movies.detail', compact('movies'));
     }
 
@@ -101,7 +103,7 @@ class MovieController extends Controller
         $movie->deskripsi = $request->deskripsi;
         $movie->image = $files;
         $movie->save();
-        return redirect()->route('home')
+        return redirect()->route('users')
             ->with('success', 'Movie created successfully.');
         //Redirect ke halaman books/index.blade.php dengan pesan success
     }

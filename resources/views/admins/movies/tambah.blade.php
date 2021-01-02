@@ -22,7 +22,12 @@
                   </div>
                   <div class="form-group">
                     <div class="input-group">
-                      <input type="date" name="kategori" class="form-control" placeholder="Category">
+                      <select name="kategori" class="form-control" id="">
+                        <option value="aksi">Aksi</option>
+                        <option value="romantis">Romantis</option>
+                        <option value="anime">Anime</option>
+                      </select>
+                      {{-- <input type="date" name="kategori" class="form-control" placeholder="Category"> --}}
                       <div class="input-group-append">
                         <span class="input-group-text">
                           <i class="mdi mdi-check-circle-outline"></i>
@@ -43,7 +48,11 @@
                   
                   <div class="form-group">
                     <div class="input-group">
-                      <input type="text" name="id_produser" class="form-control" placeholder="ID Produser">
+                      <select name="id_produser" class="form-control" id="">
+                        @foreach ($producers as $item)
+                        <option value="{{$item->id}}">{{$item->nama}}</option>    
+                        @endforeach                        
+                      </select>                      
                       <div class="input-group-append">
                         <span class="input-group-text">
                           <i class="mdi mdi-check-circle-outline"></i>

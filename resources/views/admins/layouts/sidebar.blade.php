@@ -9,8 +9,9 @@
                   <div class="dot-indicator bg-success"></div>
                 </div>
                 <div class="text-wrapper">
-                  <p class="profile-name">{{Auth::user()->name}}</p>
-                  <p class="designation">{{Auth::user()->email}}</p>
+                  {{-- {{Auth::user()->name}} --}}
+                  <p class="profile-name">Admin</p>
+                  <p class="designation">Percobaan</p>
                 </div>
               </a>
             </li>
