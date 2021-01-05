@@ -16,4 +16,4 @@
         </form>
         @include('movies.comment_replies', ['comments' => $comment->replies])
     </div>
-@endforeach
+@endforeach 

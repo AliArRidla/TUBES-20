@@ -79,6 +79,7 @@
                                 <th>Category</th>
                                 <th>Deskripsi</th>
                                 <th>Produser</th>
+                                {{-- <th>Comments</th> --}}
                                 <th>Action</th>
                               </tr>
                             </thead>
@@ -91,7 +92,8 @@
                                 <td>{{$item->judul}}</td>                                
                                 <td>{{$item->kategori}}</td>
                                 <td>{{$item->deskripsi}}</td>
-                                <td>{{$item->id}}</td>
+                                <td>{{$item->id_produser}}</td>
+                                {{-- <td>{{$item->}}</td> --}}
                                 <td>
                                   <a href="/movies/edit/{{$item->id}}" class="btn btn-success toolbar-item">edit</a>
                                   <a href="/mmovies/delete/{{$item->id}}" class="btn btn-danger toolbar-item">delete</a>

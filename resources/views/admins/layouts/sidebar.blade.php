@@ -40,6 +40,12 @@
                 <span class="menu-title">Users</span>
               </a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ route('comments') }}">
+                <i class="menu-icon typcn typcn-user-outline"></i>
+                <span class="menu-title">Comments</span>
+              </a>
+            </li>
             {{-- <li class="nav-item">
               <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
                 <i class="menu-icon typcn typcn-document-add"></i>
