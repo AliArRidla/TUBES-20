@@ -19,7 +19,9 @@ class MoviesController extends Controller
     public function index()
     {
         $movies = Movie::all();
-        return view('admins.movies.home', compact('movies'));
+        $comments = Comment::all();
+        $producers = Producer::all();
+        return view('admins.movies.home', compact(['movies'], ['comments'], ['producers']));
     }
 
     /**

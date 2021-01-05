@@ -41,9 +41,9 @@
               </div>
             </li>
           </ul>
-          <form class="ml-auto search-form d-none d-md-block" action="#">
+          <form class="ml-auto search-form d-none d-md-block" action="/producers/cari" method="GET">
             <div class="form-group">
-              <input type="search" class="form-control" placeholder="Search Here">
+              <input type="search" name="cari" class="form-control" placeholder="Search produser from name" value="{{ old('cari') }}">
             </div>
           </form>
           <ul class="navbar-nav ml-auto">

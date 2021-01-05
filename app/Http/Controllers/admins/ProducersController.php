@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Producer;
 use Illuminate\Http\Request;
 // use Barryvdh\DomPDF\PDF;
+use Exception;
 use PDF;
 
 class ProducersController extends Controller
@@ -123,11 +124,52 @@ class ProducersController extends Controller
         return redirect()->route('producers')
             ->with('danger', 'Producers deleted successfully.');
     }
-    public function print()
+    public function printPDF()
     {
         $producer = Producer::all();
         $pdf = PDF::loadView('admins.producers.print', compact('producer'));
         return $pdf->download('laporan_producer.pdf');
         // return $pdf->download('laporan.pdf');
+    }
+    // print dokumen
+    // public function printDOC()
+    // {
+    //     $phpWord = new \PhpOffice\PhpWord\PhpWord();
+    //     $section = $phpWord->addSection();
+    //     $description = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+    //                     tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    //                     quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    //                     consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+    //                     cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+    //                     proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
+
+    //     $section->addImage("http://itsolutionstuff.com/frontTheme/images/logo.png");
+
+    //     $section->addText($description);
+
+    //     $objWriter = \PhpOffice\PhpWord\IOFactory::createWriter($phpWord, 'Word2007');
+    //     try {
+    //         $objWriter->save(storage_path('helloWorld.docx'));
+    //     } catch (Exception $e) {
+    //     }
+
+    //     return response()->download(storage_path('helloWorld.docx'));
+    // }
+    public function cari(Request $request, Producer $producer)
+    {
+        $search = $request->cari;
+        // Search in the title and body columns from the posts table
+        $producers = Producer::query()
+            ->where('nama', 'LIKE', "%{$search}%")
+            ->get();
+
+        // Return the search view with the resluts compacted
+        return view('admins.producers.hasilCariProduser', compact('producers'));
+
+
+        // $cari = Producer::findOrFail($producer->nama);
+        // $producers = Producer::where('nama', 'like', "%" . $cari . "%");
+        // return view('admins.producers.hasilCariProduser', compact('producers'));
+        // dd($producers);
     }
 }
